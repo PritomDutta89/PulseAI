@@ -33,7 +33,7 @@ export interface User extends Document {
   messages: Message[];
 }
 
-// Use schema
+// User schema
 const UserSchema = new Schema<User>({
   userName: {
     type: String,
@@ -72,5 +72,8 @@ const UserSchema = new Schema<User>({
     default: true,
   },
   messages: [MessageSchema],
-  messages: [MessageSchema],
 });
+
+const userModel =
+  (mongoose.models.User as mongoose.Model<User>) ||
+  mongoose.model<User>("User", UserSchema);
