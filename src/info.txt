@@ -1,0 +1,8 @@
+1. In Node js once you run the server, from that time its connected with DB until you stop the server
+But
+In Next.js its work differently, next js not running the server all time, its connect with server only when,
+demand is created. means when req send frontend side that time only created, after that it closed it again. 
+means for every req it connected with server again and again
+so problem is if you send 1 req and in middle you continuously send another req, then it will cause issue [performance issue],
+bcz it connected with 2 times, and throw err.
+Solution - so we check if connection is present then dont connect, if not then connect it 
